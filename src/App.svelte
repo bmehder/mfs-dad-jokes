@@ -54,6 +54,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1em;
     color: #fff;
+    border-radius: 16px;
   }
   h4 {
     margin: 1em 0;
