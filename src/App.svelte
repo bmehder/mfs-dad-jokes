@@ -3,10 +3,10 @@
 <script>
   import { onMount } from "svelte";
 
-  let randomJoke;
+  let joke;
 
   const getRandomJoke = async () => {
-    const response = await fetch("https://icanhazdadjoke.com", {
+    const response = await fetch("https://icanhazdadjo1ke.com", {
       headers: { Accept: "application/json" },
     });
     const json = await response.json();
@@ -18,22 +18,22 @@
     await onRandomJoke();
   });
 
-  async function onRandomJoke() {
+  const onRandomJoke = async () => {
     try {
-      randomJoke = await getRandomJoke();
+      joke = await getRandomJoke();
     } catch (error) {
-      console.log("Don't panic...but there was an error with the api request.");
+      console.log(error);
     }
-  }
+  };
 </script>
 
 <article>
   <h4>Random Dad Jokes</h4>
   <button on:click={onRandomJoke}>Get Another Joke</button>
-  {#if randomJoke}
-    <div>{randomJoke}</div>
+  {#if joke}
+    <div>{joke}</div>
   {:else}
-    <p>Sorry, there was an error contacting the joke api. :-(</p>
+    <div>A new joke is loading...</div>
   {/if}
 </article>
 
@@ -83,12 +83,10 @@
       transparent,
       rgba(0, 0, 0, 0.05)
     );
+    box-shadow: none;
   }
   button:focus {
     outline: none;
-  }
-  p {
-    line-height: 1.5;
   }
   div {
     margin: 1em 0;
