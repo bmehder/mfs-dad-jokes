@@ -6,7 +6,7 @@
   let joke;
 
   const getRandomJoke = async () => {
-    const response = await fetch("https://icanhazdadjo1ke.com", {
+    const response = await fetch("https://icanhazdadjoke.com", {
       headers: { Accept: "application/json" },
     });
     const json = await response.json();
